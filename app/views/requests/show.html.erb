@@ -2,5 +2,7 @@
 <p>Find me in app/views/requests/show.html.erb</p>
 
 <%= render @request %>
-
+<br>
 <%= link_to 'Back', requests_path %>
+
+<%= render 'comments/form', comment: @comment %>

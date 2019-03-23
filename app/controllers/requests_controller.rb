@@ -9,6 +9,9 @@ class RequestsController < ApplicationController
     @requests2 = Request.order(sort_column + " " + sort_direction)    
   end
 
+  def show
+    @comment = Comment.new
+  end
   def create
     @request = Request.new(request_params)
     @request.user = current_user

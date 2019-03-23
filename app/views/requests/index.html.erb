@@ -17,7 +17,7 @@
   <tbody>
     <% @requests2.each do |request| %>
       <tr>
-        <td><%= request.title %></td>
+        <td><%= link_to request.title, request %></td>
         <td><%= request.score %></td>
         <td><%= link_to 'Voteup', request_voteup_url(request) %></td>
         <td><%= link_to 'Votedown', request_votedown_url(request) %></td>
