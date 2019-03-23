@@ -14,6 +14,14 @@ Devise.setup do |config|
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
 
+  # Add the credentials from your Google application to your secrets
+  client_id = ENV["GOOGLE_APP_ID"] # Rails.application.secrets[:google_client_id]
+  client_secret = ENV["GOOGLE_APP_SECRET"] # Rails.application.secrets[:google_secret]
+  # Configure Google omniauth with proper scope
+  config.omniauth :google_oauth2, client_id, client_secret, {
+    scope: "contacts.readonly,userinfo.email"
+  }
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class

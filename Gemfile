@@ -9,6 +9,9 @@ gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use devise as authentication method
 gem 'devise'
+# Use omniauth-google-oauth2 as google authentication method
+# https://medium.com/@_benrudolph/end-to-end-devise-omniauth-google-api-rails-7f432b38ed75
+gem 'omniauth-google-oauth2'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
