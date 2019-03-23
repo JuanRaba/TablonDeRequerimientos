@@ -12,3 +12,7 @@
   <strong>User:</strong>
   <%= request.user.show_name %>
 </p>
+
+
+<%= link_to 'Voteup', request_voteup_url(request) %> |
+<%= link_to 'Votedown', request_votedown_url(request) %>

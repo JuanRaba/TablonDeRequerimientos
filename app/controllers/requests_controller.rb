@@ -22,7 +22,24 @@ class RequestsController < ApplicationController
     end
   end
 
+  def voteup
+    vote(1)
+    redirect_to root_path, notice: 'voteup'
+  end
+
+  def votedown
+    vote(-1)
+    redirect_to root_path, notice: 'votedown'
+  end
+
   private
+
+  def vote(value)
+    @vote = Vote.first_or_create(request: Request.find(params[:request_id]), user: current_user)
+    @vote.value = value
+    @vote.save
+  end
+
   def set_request
     @request = Request.find(params[:id])
   end
