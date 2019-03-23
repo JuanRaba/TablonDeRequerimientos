@@ -5,12 +5,13 @@ class RequestsController < ApplicationController
   def index
     # needed as we have the request form in index
     @request = Request.new
-    @requests = Request.all
     @requests2 = Request.order(sort_column + " " + sort_direction)    
   end
 
   def show
+    # needed as we have the comment form in show
     @comment = Comment.new
+    @comments = Comment.all
   end
   def create
     @request = Request.new(request_params)

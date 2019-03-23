@@ -6,3 +6,7 @@
 <%= link_to 'Back', requests_path %>
 
 <%= render 'comments/form', comment: @comment %>
+
+<% @comments.each do |comment| %>
+  <%= render comment %>
+<% end %>
