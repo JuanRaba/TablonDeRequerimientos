@@ -10,6 +10,7 @@
     <tr>
       <th><%= sortable "title", "Request title" %></th>
       <th><%= sortable "score", "Score"%></th>
+      <th><%= "#comments"%></th>
       <th colspan="2">
     </tr>
   </thead>
@@ -19,6 +20,7 @@
       <tr>
         <td><%= link_to request.title, request %></td>
         <td><%= request.score %></td>
+        <td><%= request.comments.count %></td>
         <td><%= link_to 'Voteup', request_voteup_url(request) %></td>
         <td><%= link_to 'Votedown', request_votedown_url(request) %></td>
       </tr>
