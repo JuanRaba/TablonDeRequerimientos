@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  get 'requests/index'
-  get 'requests/create'
+
+  resources :requests, only: [:index, :show, :create] do
+    get 'voteup'
+    get 'votedown'
+    resources :comments, only: [:create]
+  end
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root to: 'requests#index'
