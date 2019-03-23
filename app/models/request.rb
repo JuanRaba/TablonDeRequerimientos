@@ -1,6 +1,7 @@
 class Request < ApplicationRecord
   belongs_to :user
   has_many :votes
+  has_many :comments
 
   validates :title, presence: { message: "must be given please" }
 
