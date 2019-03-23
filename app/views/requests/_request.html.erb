@@ -13,6 +13,11 @@
   <%= request.user.show_name %>
 </p>
 
+<p>
+  <strong>Votes:</strong>
+  <%= request.vote_result %>
+</p>
+
 
 <%= link_to 'Voteup', request_voteup_url(request) %> |
 <%= link_to 'Votedown', request_votedown_url(request) %>

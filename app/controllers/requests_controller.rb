@@ -35,8 +35,12 @@ class RequestsController < ApplicationController
   private
 
   def vote(value)
-    @vote = Vote.first_or_create(request: Request.find(params[:request_id]), user: current_user)
-    @vote.value = value
+    @vote = Vote.where(request_id: params[:request_id], user: current_user).first
+    if @vote
+      @vote.value = value
+    else
+      @vote = Vote.create(request_id: params[:request_id], user: current_user, value: value)
+    end
     @vote.save
   end
 
