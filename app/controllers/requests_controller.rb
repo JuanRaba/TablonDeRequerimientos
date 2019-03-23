@@ -4,6 +4,7 @@ class RequestsController < ApplicationController
   def index
     # needed as we have the request form in index
     @request = Request.new
+    @requests = Request.all
   end
 
   def create

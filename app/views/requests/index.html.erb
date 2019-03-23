@@ -2,3 +2,9 @@
 <p>Find me in app/views/requests/index.html.erb</p>
 
 <%= render 'form', request: @request %>
+
+
+<% @requests.each do |request| %>
+  <%= render request %>
+  <br>
+<% end %>
