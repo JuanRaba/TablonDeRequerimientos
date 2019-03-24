@@ -1,9 +1,8 @@
-<h1>Requests#show</h1>
-<p>Find me in app/views/requests/show.html.erb</p>
+<h1 class="title">Requests details</h1>
 
 <%= render @request %>
 <br>
-<%= link_to 'Back', requests_path %>
+<%= link_to 'Back to requests', requests_path %>
 
 <%= render 'comments/form', comment: @comment %>
 
