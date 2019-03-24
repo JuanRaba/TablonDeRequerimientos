@@ -28,18 +28,26 @@
       <div class="col-xs-12 col-md-10"><!-- if u want 2 requests cols change here-->
         <div class="card">
           <div class="card-body">   
-            <h3>
-              <%= link_to request.title, request %>
-            </h3>
-            <hr>
-            <p>
-              <strong>Votes:</strong>
-              <%= request.popularity %>
-              <%= link_to 'Voteup', request_voteup_url(request) %> |
-              <%= link_to 'Votedown', request_votedown_url(request) %> 
-              <strong>Score:</strong>
-              <%= request.score %>
-            </p>
+            <div class="row">
+              <div class="score-container">
+
+                <div class="vote" id="voteup">
+                  <%= link_to '+', request_voteup_url(request) %>    
+                </div>
+
+                <div class="vote" id="votedown">
+                  <%= link_to '-', request_votedown_url(request) %>
+                </div>
+                
+                <h3>
+                  <%= request.score %> / <%= request.popularity %>
+                </h3>
+              </div>
+          
+              <h2>
+                 <%= link_to request.title, request %>
+              </h2>
+            </div>
           </div>
         </div>
       </div>

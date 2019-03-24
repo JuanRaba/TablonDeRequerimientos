@@ -6,3 +6,19 @@
   text-align: center;
   margin-top: 20px
 }
+
+.score-container{
+  position: relative;
+  clear: both;
+  margin-right: 20px
+}
+.vote{
+  position: absolute;
+  margin-left: 50%; 
+}
+#voteup{
+  margin-top: -20px;
+}
+#votedown{
+  margin-top: 50%;
+}
