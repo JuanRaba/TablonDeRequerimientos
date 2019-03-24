@@ -1,36 +1,33 @@
+<div class="card">
+  <div class="card-body">
 
-<div class="col-xs-12 col-md-10">
-  <div class="card">
-    <div class="card-body">
+    <p>
+      <strong>Title:</strong>
+      <%= link_to request.title, request %>
+    </p>
 
-      <p>
-        <strong>Title:</strong>
-        <%= link_to request.title, request %>
-      </p>
+    <p>
+      <strong>Content:</strong>
+      <%= raw(request.content) %>
+    </p>
 
-      <p>
-        <strong>Content:</strong>
-        <%= raw(request.content) %>
-      </p>
+    <p>
+      <strong>User:</strong>
+      <%= request.user.show_name %>
+    </p>
 
-      <p>
-        <strong>User:</strong>
-        <%= request.user.show_name %>
-      </p>
+    <p>
+      <strong>Score:</strong>
+      <%= request.score %>
+    </p>
 
-      <p>
-        <strong>Score:</strong>
-        <%= request.score %>
-      </p>
+    <p>
+      <strong>Votes:</strong>
+      <%= request.popularity %>
+    </p>
 
-      <p>
-        <strong>Votes:</strong>
-        <%= request.popularity %>
-      </p>
+    <%= link_to 'Voteup', request_voteup_url(request) %> |
+    <%= link_to 'Votedown', request_votedown_url(request) %> 
 
-      <%= link_to 'Voteup', request_voteup_url(request) %> |
-      <%= link_to 'Votedown', request_votedown_url(request) %> 
-
-    </div>
   </div>
 </div>

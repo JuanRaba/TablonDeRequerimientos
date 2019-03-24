@@ -1,11 +1,23 @@
 <h1 class="title">Requests details</h1>
+<div class="container-fluid total">
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-md-10">
+      <%= render @request %>
+    </div>
+  </div>
+</div>
 
-<%= render @request %>
 <br>
 <%= link_to 'Back to requests', requests_path %>
 
 <%= render 'comments/form', comment: @comment %>
 
-<% @comments.each do |comment| %>
-  <%= render comment %>
-<% end %>
+<div class="container-fluid total">
+  <div class="row justify-content-center">
+    <% @comments.each do |comment| %>
+      <div class="col-xs-12 col-md-6">
+        <%= render comment %>
+      </div>
+    <% end %>
+  </div>
+</div>
