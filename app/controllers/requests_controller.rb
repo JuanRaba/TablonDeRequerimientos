@@ -53,14 +53,17 @@ class RequestsController < ApplicationController
     @vote = Vote.where(request: @request, user: current_user).first
     previous_vote_value = 0
     if @vote
+      # if vote already exits, save previous_vote_value to undo vote value
       previous_vote_value = @vote.value
       @vote.value = value
     else
+      # if vote doest exist, create it and increase popularity 
       @vote = Vote.create(request: @request, user: current_user, value: value)
+      @request.popularity += 1
     end
+
     ActiveRecord::Base.transaction do
       begin
-        # if vote already exits, undo vote value and set new value
         @request.score = @request.score + value - previous_vote_value
         @request.save!
         @vote.save!
