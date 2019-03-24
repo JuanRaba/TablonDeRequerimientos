@@ -8,9 +8,8 @@
 </div>
 
 <br>
-<%= link_to 'Back to requests', requests_path %>
 
-<%= render 'comments/form', comment: @comment %>
+<h2 class="title">Comments</h2>
 
 <div class="container-fluid total">
   <div class="row justify-content-center">
@@ -21,3 +20,7 @@
     <% end %>
   </div>
 </div>
+
+<%= render 'comments/form', comment: @comment %>
+
+<%= link_to 'Back to requests', requests_path %>
