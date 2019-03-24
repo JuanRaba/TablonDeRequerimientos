@@ -1,23 +1,31 @@
-<p>
-  <strong>Title:</strong>
-  <%= request.title %>
-</p>
+<div class="card">
+  <div class="card-body">
 
-<p>
-  <strong>Content:</strong>
-  <%= request.content %>
-</p>
+    <p>      
+      <h2>
+        <%= link_to request.title, request %>
+      </h2>
+    </p>
 
-<p>
-  <strong>User:</strong>
-  <%= request.user.show_name %>
-</p>
+    <p>
+      <%= raw(request.content) %>
+      
+      <strong>Created by:</strong>
+      <%= request.user.show_name %>
+    </p>
 
-<p>
-  <strong>Votes:</strong>
-  <%= request.vote_result %>
-</p>
+    <hr>
 
+    <p>
 
-<%= link_to 'Voteup', request_voteup_url(request) %> |
-<%= link_to 'Votedown', request_votedown_url(request) %>
+      <strong>Score:</strong>
+      <%= request.score %>
+      <strong>Votes:</strong>
+      <%= request.popularity %>
+
+      <%= link_to 'Voteup', request_voteup_url(request) %> |
+      <%= link_to 'Votedown', request_votedown_url(request) %> 
+    </p>
+
+  </div>
+</div>

@@ -1,12 +1,26 @@
-<h1>Requests#show</h1>
-<p>Find me in app/views/requests/show.html.erb</p>
+<h1 class="title">Requests details</h1>
+<div class="container-fluid total">
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-md-10">
+      <%= render @request %>
+    </div>
+  </div>
+</div>
 
-<%= render @request %>
 <br>
-<%= link_to 'Back', requests_path %>
+
+<h2 class="title">Comments</h2>
+
+<div class="container-fluid total">
+  <div class="row justify-content-center">
+    <% @comments.each do |comment| %>
+      <div class="col-xs-12 col-md-6">
+        <%= render comment %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <%= render 'comments/form', comment: @comment %>
 
-<% @comments.each do |comment| %>
-  <%= render comment %>
-<% end %>
+<%= link_to 'Back to requests', requests_path %>

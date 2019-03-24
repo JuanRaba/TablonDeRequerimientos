@@ -51,16 +51,26 @@ class RequestsController < ApplicationController
   def vote(value)
     @request = Request.find(params[:request_id])
     @vote = Vote.where(request: @request, user: current_user).first
+    previous_vote_value = 0
     if @vote
-      # if vote already exits, undo vote value and set new value
-      @request.score = @request.score - @vote.value
+      # if vote already exits, save previous_vote_value to undo vote value
+      previous_vote_value = @vote.value
       @vote.value = value
     else
+      # if vote doest exist, create it and increase popularity 
       @vote = Vote.create(request: @request, user: current_user, value: value)
+      @request.popularity += 1
     end
-    @request.score = @request.score + value
-    @request.save
-    @vote.save
+
+    ActiveRecord::Base.transaction do
+      begin
+        @request.score = @request.score + value - previous_vote_value
+        @request.save!
+        @vote.save!
+      rescue
+        redirect_to root_path, alert: 'try again, concurrency error ocurred'
+      end
+    end
   end
 
   def set_request

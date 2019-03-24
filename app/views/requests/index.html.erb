@@ -1,37 +1,51 @@
-<h1>Requests#index</h1>
-<p>Find me in app/views/requests/index.html.erb</p>
+<h1 class="title">Requests#index</h1>
 
-<%= render 'form', request: @request %>
+<a href="#addExpense" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">    
+  <div>
+    <h2>Add new request</h2>
+  </div>
+</a>
+<ul class="collapse list-unstyled" id="addExpense">
+  <%= render 'form', request: @request %>
+</ul>
 
-<script src="https://cdn.jsdelivr.net/npm/tablefilter@0.6.75/src/tablefilter.js"></script>
-
-<table id="table1" cellspacing="0" class="table mytable filterable">
+<table class="table">
+  <!-- nice looking Ordering table -->
   <thead>
     <tr>
+      <th>Order by:</th>
       <th><%= sortable "title", "Request title" %></th>
       <th><%= sortable "score", "Score"%></th>
-      <th><%= "#comments"%></th>
-      <th colspan="2">
+      <th><%= sortable "popularity", "Popularity"%></th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @requests2.each do |request| %>
-      <tr>
-        <td><%= link_to request.title, request %></td>
-        <td><%= request.score %></td>
-        <td><%= request.comments.count %></td>
-        <td><%= link_to 'Voteup', request_voteup_url(request) %></td>
-        <td><%= link_to 'Votedown', request_votedown_url(request) %></td>
-      </tr>
-    <% end %>
-  </tbody>
 </table>
 
+<div class="container-fluid total">
+  <div class="row justify-content-center">
+    <% @requests2.each do |request| %>
+      <div class="col-xs-12 col-md-10"><!-- if u want 2 requests cols change here-->
+        <div class="card">
+          <div class="card-body">   
+            <h3>
+              <%= link_to request.title, request %>
+            </h3>
+            <hr>
+            <p>
+              <strong>Votes:</strong>
+              <%= request.popularity %>
+              <%= link_to 'Voteup', request_voteup_url(request) %> |
+              <%= link_to 'Votedown', request_votedown_url(request) %> 
+              <strong>Score:</strong>
+              <%= request.score %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
+<script>tinymce.init({ selector:'textarea' });</script>
 
-
-<script language="javascript" type="text/javascript">  
-    var tf01 = new TF('table1');  
-    tf01.AddGrid();  
-</script>   
