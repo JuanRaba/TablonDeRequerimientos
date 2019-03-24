@@ -1,9 +1,13 @@
 <h1>Requests#index</h1>
-<p>Find me in app/views/requests/index.html.erb</p>
 
-<%= render 'form', request: @request %>
-
-<script src="https://cdn.jsdelivr.net/npm/tablefilter@0.6.75/src/tablefilter.js"></script>
+<a href="#addExpense" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">    
+  <div class="title">
+    <h2>Add new request</h2>
+  </div>
+</a>
+<ul class="collapse list-unstyled" id="addExpense">
+  <%= render 'form', request: @request %>
+</ul>
 
 <table id="table1" cellspacing="0" class="table mytable filterable">
   <thead>
@@ -34,7 +38,3 @@
 <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=f85d3ydd51znccra8816m2r6ydolagwhm9mddmat6hktv5xn"></script>
 <script>tinymce.init({ selector:'textarea' });</script>
 
-<script language="javascript" type="text/javascript">  
-    var tf01 = new TF('table1');  
-    tf01.AddGrid();  
-</script>   
